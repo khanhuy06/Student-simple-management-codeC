@@ -68,17 +68,19 @@ while (1) {
     else if (n==3) {
         printf ("Nhập ID sinh viên cần tìm kiếm :\n");
         scanf ("%d", &idtimkiem);
-       
-            if {
-                for (i==0; i<soluong; i++) {
-            if {idtimkiem == dssv[i].ID;
-            printf ("ID sinh viên : "%d", Họ và tên : "%s".",..,..);
+        
+        int timthay = 0;  
+        
+        for (i==0; i<soluong; i++) {
+                if {idtimkiem == dssv[i].ID;
+                printf ("ID sinh viên : "%d", Họ và tên : "%s".",..,..);
+                timthay = 1;
                 }
                 }
-            }
-            else {
-                printf ("Mã ID chưa tồn tại.\n");
-            }
+           
+        if (timthay=0) {
+            printf ("Mã ID chưa tồn tại.\n");
+        }
         
     }
 
