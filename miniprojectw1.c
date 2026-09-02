@@ -21,7 +21,7 @@ while (1) {
     printf ("2. Xem danh sách\n");
     printf ("3. Tìm sinh viên\n");
     printf ("4. Thoát\n");
-    printf ("Vui lòng chọn chức năng : 1-4",\n);
+    printf ("Vui lòng chọn chức năng : 1-4\n");
 
     scanf ("%d", &n);
 
@@ -53,19 +53,23 @@ while (1) {
         printf ("Sinh viên vừa thêm là %s, số ID : %d\n",s,a);
     }
 
-    else if (n==2) {
+    else if (n==2){
         if (soluong==0) {
             printf ("Danh sách sinh viên trống.\n");
         }
         else {
-                printf ("Danh sách sinh viên :",\n);
+                printf ("Danh sách sinh viên :\n");
                 for (int i=0; i<soluong; i++) {
                     printf ("Mã số ID : %d, tên sinh viên : %s\n", dssv[i].ID, dssv[i].tensinhvien);
                 }
-            }
-        }
+             }
+    }
 
     else if (n==3) {
+
+        int idtimkiem;
+        int i; 
+
         printf ("Nhập ID sinh viên cần tìm kiếm :\n");
         scanf ("%d", &idtimkiem);
         
@@ -73,15 +77,14 @@ while (1) {
         
         for (i=0; i<soluong; i++) {
                 if (idtimkiem == dssv[i].ID); {
-                printf ("ID sinh viên : "%d", Họ và tên : "%s".",..,..);
+                printf ("ID sinh viên : %d, Họ và tên : %s.", dssv[i].ID, dssv[i].tensinhvien);
                 timthay = 1;
                 }
                 }
            
         if (timthay==0) {
             printf ("Mã ID chưa tồn tại.\n");
-        }
-        
+        }       
     }
 
     else if (n==4) {
@@ -89,7 +92,7 @@ while (1) {
         return 0;
     }
     else {
-        printf ("Lỗi, xin vui lòng chọn giá trị từ 1 đến 4",\n);
+        printf ("Lỗi, xin vui lòng chọn giá trị từ 1 đến 4.\n");
     }
 }
     return 0;
