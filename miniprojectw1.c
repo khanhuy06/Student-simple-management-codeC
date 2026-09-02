@@ -8,10 +8,10 @@ int main () {
     int succhua = 2;
     int n;
 
-    struct Sinhvien {
+    typedef struct {
         int ID;
         char tensinhvien[50];
-    }; // => phải có dấu ; ở struct
+    }Sinhvien; // => phải có dấu ; ở struct
 
     Sinhvien *dssv = malloc(succhua*sizeof(Sinhvien)); // => phải xin đất cố định ở ngoài while
 
@@ -55,7 +55,7 @@ while (1) {
 
     else if (n==2) {
         if (soluong==0) {
-            printf ("Danh sách sinh viên trống.",\n);
+            printf ("Danh sách sinh viên trống.\n");
         }
         else {
                 printf ("Danh sách sinh viên :",\n);
@@ -71,14 +71,14 @@ while (1) {
         
         int timthay = 0;  
         
-        for (i==0; i<soluong; i++) {
-                if {idtimkiem == dssv[i].ID;
+        for (i=0; i<soluong; i++) {
+                if (idtimkiem == dssv[i].ID); {
                 printf ("ID sinh viên : "%d", Họ và tên : "%s".",..,..);
                 timthay = 1;
                 }
                 }
            
-        if (timthay=0) {
+        if (timthay==0) {
             printf ("Mã ID chưa tồn tại.\n");
         }
         
