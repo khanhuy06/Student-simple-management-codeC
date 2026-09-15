@@ -38,7 +38,7 @@ int main (){
         FILE *f = fopen ("quanlysinhvieninsa.txt","r"); //Mở file phải mở ở ngoài vòng lặp for
         for (int i = 0; i < soluongsinhvien; i++) { //Phải khai báo i ở trong for
             fscanf(f,"%s, %d, %f", sinhvien[i].ten, &sinhvien[i].mssv, &sinhvien[i].diem); //sinhvien[i] lúc này nó không còn là 1 con trỏ nữa nên phải dùng "."
-            // fscanf là đọc dữ liệu của "f" ở trong ổ cứng, ghi đè "nó" vào "các địa chỉ mình đã gán" ở trên RAM RAM
+            // fscanf là đọc dữ liệu của "f" ở trong ổ cứng, ghi đè "nó" vào "các địa chỉ mình đã gán" ở trên RAM
         }
         fclose (f);
     }
@@ -115,7 +115,7 @@ int main (){
             FILE *f = fopen ("quanlysinhvieninsa.txt", "a"); //mở file để ghi nối
             for (int i = soluongsinhvienhientai; i < soluongsinhvien; i++) { //phải có soluongsinhvienhientai để biết ghi nối từ đâu 
                 fprintf (f, "%d %s %f\n", sinhvien[i].mssv, sinhvien[i].ten, sinhvien[i].diem);
-                //Ghi vào file "f" các "kiểu dữ liệu" đã được xác định, dùng data từ các biến được liệt kê
+                //Ghi vào file "f" các "kiểu dữ liệu" đã được xác định, dùng data từ các biến được liệt kê, k cần "&"
             }
             fclose (f);
             }
