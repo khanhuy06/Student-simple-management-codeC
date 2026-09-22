@@ -76,7 +76,10 @@ int main (){
             int aa;
             while ((aa=getchar())!= '\n' && (aa!=EOF))
             fgets (sinhvien[soluongsinhvien-1].ten, sizeof(sinhvien[soluongsinhvien-1].ten), stdin); //fgets là lấy chuỗi, nên lưu vào file sẽ là %s
-            
+            //fgets sẽ nuốt luôn \n
+            sinhvien[soluongsinhvien-1].ten[strcspn(sinhvien[soluongsinhvien-1].ten, "\n")] = '\0'; // vì fgets lấy luôn \n, nên ta phải dùng lệnh này để bỏ \n, đổi nó thành \0.
+            // scanf thì thấy dấu cách [ ] là dừng lại.
+
             printf ("Vui lòng điền điểm sinh viên\n");
             scanf ("%f",&sinhvien[soluongsinhvien-1].diem);
         }
