@@ -42,5 +42,3 @@ int main (int soluongtu, char *tuso[]) { // Cứ khi nào chạy hàm main, Hệ
 
 
 
-
-

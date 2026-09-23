@@ -11,7 +11,7 @@ int main (int argc, char *argv[]) {
     FILE *f = fopen (argv[1], "r"); // Không cần bỏ argv ở trong ngoặc kép vì nó k phải tên.
     if (f==NULL) {
         printf ("File không tồn tại.\n");
-        return 0;
+        return 1;
     }
     
     // Ý tưởng là ghi báo cáo vào 1 file khác để dùng fgets quét và ghi dữ liệu vào
