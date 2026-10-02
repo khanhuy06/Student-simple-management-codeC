@@ -1,0 +1,11 @@
+MỞ, ĐỌC, GHI FILE TEXT
+Chương trình C (log_hunter): Công cụ phân tích và quét file log hệ thống dòng-theo-dòng 
+để phát hiện các lỗ hổng bảo mật phổ biến.
+
+- Kiểm tra tham số đầu vào (yêu cầu truyền tên file log qua terminal).
+- Đọc từng dòng file log bằng fgets kết hợp hàm strst để dò tìm:
+  + Path Traversal (chứa "..")
+  + SQL Injection (chứa "' OR " hoặc "--")
+  + XSS Injection (chứa "<script>")
+- Tự động ghi kết quả phát hiện vào file "baocao.txt" (chế độ append).
+- Đọc lại file "baocao.txt" để hiển thị toàn bộ cảnh báo ra màn hình trước khi kết thúc.

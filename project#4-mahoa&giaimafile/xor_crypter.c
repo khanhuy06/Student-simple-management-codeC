@@ -18,6 +18,6 @@ int main (int argc, char *argv[]) { // Số llượng từ - Danh sách các t�
     // Người dùng có thể vừa giải mã, vừa mã hóa, chỉ cần có 3 file khác nhau (A để đọc, B để mã hóa, C để hứng dữ liệu giải mã).
     mahoavagiaima(argv[1], argv[2], argv[3]); // Ta nhập 3 chuỗi làm dữ liệu đầu vào.
     // Bây giờ trong file argv[2] đã có dữ liệu sau mã hóa hoặc giải mã rồi.
-
+    fclose (f);
     return 0;
 }

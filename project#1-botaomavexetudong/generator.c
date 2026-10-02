@@ -1,4 +1,4 @@
-#include <studio.h>
+#include <stdio.h>
 #include <ctype.h>  // Cần thư viện này để dùng hàm toupper() để đổi chữ thường thành chữ hoa, và hàm isdigit() để biết ký tự này có phải là một chữ số từ '0' đến '9' hay không?
 #include "generator.h"
 

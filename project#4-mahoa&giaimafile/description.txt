@@ -1,0 +1,3 @@
+MỞ, ĐỌC, GHI FILE NHỊ PHÂN
+Bài này code 1 công cụ dòng lệnh, nhận 3 tham số đầu vào.
+1 file nguồn cần mã hóa, 1 file đích để ghi dữ liệu sau mã hóa vào, và 1 file thứ 3 để giải mã ngược.

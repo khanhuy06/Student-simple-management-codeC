@@ -1,0 +1,40 @@
+SYSTEM CALL
+ĐỀ BÀI: TỰ CHẾ CÔNG CỤ DÒNG LỆNH "my_cat.c"
+- Viết chương trình nhận tên file từ tham số dòng lệnh (argv[1]), đọc nội dung file đó 
+    và bắn thẳng ra màn hình Terminal bằng System Call của Hệ điều hành.
+- Ví dụ khi chạy:
+    ./my_cat test.txt
+- Nội dung file "test.txt" sẽ hiện lên màn hình Terminal.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+CÁC QUY ĐỊNH CHUẨN THI CỦA INSA CVL:
+1. Vũ khí được phép dùng:
+   
+     #include <unistd.h>  // Chứa read, write, close, STDOUT_FILENO
+     #include <fcntl.h>   // Chứa open, O_RDONLY
+     #include <stdio.h>   // Chỉ mượn đúng hàm perror()
+     #include <stdlib.h>  // Chứa exit, EXIT_SUCCESS, EXIT_FAILURE
+     
+2. Vũ khí BỊ CẤM:
+     CẤM DÙNG: fopen, fread, fwrite, fclose, printf, fgets.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+KHUNG SƯỜN TỪNG BƯỚC :
+- Bước 1: Kiểm tra "argc"
+    Nếu người dùng chỉ gõ ./my_cat mà không đưa tên file (argc < 2): In thông báo cú pháp và thoát exit(EXIT_FAILURE).
+- Bước 2: Mở file bằng open
+    Cú pháp: int fd = open(argv[1], O_RDONLY);
+    Bắt lỗi (Bắt buộc): Nếu fd == -1 -> gọi perror("Loi mo file"); và thoát exit(EXIT_FAILURE);.
+- Bước 3: Vòng lặp đọc và bắn ra màn hình
+    Tạo một cái thùng: char buffer[1024];
+    Tạo biến hứng số byte đọc được: ssize_t n;
+    Vòng lặp while:
+        Hút dữ liệu từ file vào thùng bằng read(fd, buffer, sizeof(buffer)).
+        Chừng nào n > 0, dùng lệnh write để bắn dữ liệu ra màn hình:
+            write(STDOUT_FILENO, buffer, n);
+            (Trong Linux, STDOUT_FILENO là số 1 - đại diện cho màn hình).
+- Bước 4: Dọn dẹp tài nguyên
+    Đóng file: close(fd);
+    Thoát thành công: return 0; (hoặc exit(EXIT_SUCCESS);).

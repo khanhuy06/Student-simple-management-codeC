@@ -1,4 +1,5 @@
-Bạn là chuyên viên bảo mật đang thiết kế một module tường lửa mini chạy ở tầng mạng. 
+CON TRỎ HÀM, TRUYỀN HÀM VÀO 1 HÀM
+Thiết kế một module tường lửa mini chạy ở tầng mạng. 
 Hệ thống liên tục nhận được một danh sách các gói tin (Packet). 
 Nhiệm vụ của bạn là viết một động cơ lọc gói tin có khả năng nhận bất kỳ hàm kiểm tra mã độc nào được truyền vào.
 

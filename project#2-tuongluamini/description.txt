@@ -1,0 +1,5 @@
+ĐỌC TỪ CHUỖI sscanf VÀ TÌM CHUỖI CON strstr
+Bài này là 1 bài code đơn giản, công cụ dòng lệnh, 
+Người dùng sẽ gõ lệnh vào, bao gồm tên file, và 1 lệnh dạng "Method-Path-Protocol".
+Nhiệm vụ của bài này là lọc ra các lệnh có dấu hiệu Bypass bằng URL, 
+ví dụ như ../../ hoặc cố nhồi nhét để tràn bộ đệm.

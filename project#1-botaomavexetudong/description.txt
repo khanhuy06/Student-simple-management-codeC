@@ -1,0 +1,3 @@
+LÀM QUEN VỚI CÔNG CỤ DÒNG LỆNH
+Công cụ dòng lệnh, người dùng nhập loại vé và số lượng vé vào,
+công cụ này sẽ in ra hóa đơn.

@@ -8,6 +8,7 @@
 int main (int soluongtu, char *tuso[]) { // Cứ khi nào chạy hàm main, Hệ điều hành BẮT BUỘC phải truyền "số lượng TỪ" vào tham số thứ nhất, và truyền "danh sách các TỪ" vào tham số thứ hai
     
     const char *raw_loai = (soluongtu > 1) ? tuso[1] : "THUONG"; // Nếu nhập 2 từ trở lên thì trả về từ số 2, không thì trả THUONG
+    char *loai_ve;
     chuyen_thanh_chu_hoa(loai_ve, raw_loai);
 
     int so_luong = (soluongtu > 2) ? atoi(tuso[2]) : 1;

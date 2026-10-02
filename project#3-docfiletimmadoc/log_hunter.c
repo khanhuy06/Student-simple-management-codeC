@@ -44,7 +44,7 @@ int main (int argc, char *argv[]) {
     if (baocao2 == NULL) {
         return 1;
     }
-    while (fgets (line, sizeof(line), baocao2) != NULL) { // ở trường hợp như kiểu nhập mật khẩu, xác thực tên file, lệnh fgets cần xoad \n ở đuôi (miniprojectw2).
+    while (fgets (line, sizeof(line), baocao2) != NULL) { // ở trường hợp như kiểu nhập mật khẩu, xác thực tên file, lệnh fgets cần xóa \n ở đuôi (miniprojectw2).
         printf("%s", line); // fgets đã nuốt sẵn \n rồi nên k cần bỏ \n sau %s.
     }
     fclose(baocao2);

@@ -1,0 +1,69 @@
+                    TRỤ CỘT 1: Quản lý File cấp thấp (System Calls) & Tái tạo lệnh ls -l
+                                    Từ trang 65 đến 116 của slide
+
+Giảng viên sẽ cấm bạn dùng các hàm bậc cao của thư viện chuẩn như fopen, fread, fgets. Bạn bắt buộc phải code bằng 
+                                    các System Calls POSIX nguyên thủy:
+
+1// Bộ tứ nguyên thủy: open(), read(), write(), close().
+2// Di chuyển con trỏ đọc/ghi file: lseek(), pread(), pwrite().
+3// Bài code kinh điển chắc chắn thi: Viết lại lệnh ls -l của Linux bằng C
+        Dùng opendir(), readdir(), closedir() để quét thư mục.
+        Dùng stat() / lstat() để đọc thông tin I-node (struct stat).
+        Tự giải mã mặt nạ quyền hạn nhị phân (Bitmask): st_mode & S_IRUSR để in ra chuỗi quyền -rwxr-xr-x.
+        Chuyển đổi uid, gid thành tên người dùng bằng getpwuid() và getgrgid().
+------------------------------------------------------------------------------------------------------------------
+                    TRỤ CỘT 2: Quản lý Tiến trình (Process Lifecycle) & Xử lý Zombie/Orphan
+                                    Từ trang 201 đến 250 của slide
+
+                    Đây là phần "gây lú" nhất nhưng chiếm điểm cao nhất trong các bài thi:
+
+1// Nhân bản tiến trình bằng fork():
+        Hiểu chính xác tại sao 1 lệnh fork() lại trả về 2 kết quả khác nhau (trả về 0 cho con, trả về PID cho cha).
+        Phân tích hiện tượng bộ nhớ: Cha và con độc lập về biến nhưng dùng chung con trỏ file trong bảng file 
+            của hệ điều hành (Slide 235 - 237).
+2// Xử lý Tiến trình Zombie & Mồ côi (Orphan):
+        Dùng wait(&status) hoặc waitpid(pid, &status, WNOHANG).
+        Sử dụng các macro để "mổ xẻ" trạng thái kết thúc của con: WIFEXITED(status), WEXITSTATUS(status), WIFSIGNALED(status).
+        Kỹ thuật "Double fork()" (Slide 248 - 250): Kỹ thuật tách tiến trình con ra khỏi cha 
+            để tránh Zombie (rất hay hỏi trong đề thi vấn đáp/trắc nghiệm!).
+------------------------------------------------------------------------------------------------------------------
+                    TRỤ CỘT 3: Thay thế tiến trình & Xây dựng Shell Mini (exec* + dup2)
+                                    Từ trang 251 đến 277 của slide
+
+        Đỉnh cao của môn học này là bạn tự tay code được một Shell mini (như Bash / Zsh thu nhỏ):
+
+1// Họ hàm thay thế exec*():
+        Hiểu sự khác nhau giữa execve() (system call gốc) với execl, execv, execvp, execlp.
+        Biết cách dọn sạch môi trường và truyền mảng tham số kết thúc bằng NULL ((char*)0).
+2// Chuyển hướng luồng vào/ra (Redirection > và <):
+        Dùng hàm dup2(fd, STDOUT_FILENO) và dup().
+        Quy trình mô phỏng lệnh ls > output.txt: fork() → Mở file output.txt → dup2() chuyển STDOUT vào file
+            → execvp("ls") → Cha wait()
+------------------------------------------------------------------------------------------------------------------
+                        TRỤ CỘT 4: Kỹ thuật nâng cao (Bộ nhớ ảo & Khóa file)
+                                Từ trang 138 đến 157 của slide
+
+                Nếu làm được phần này, bạn sẽ cầm chắc điểm 19-20 (Top đầu lớp):
+
+1// Chiếu bộ nhớ (Memory Mapping - mmap):
+        Dùng mmap() và munmap() để tải trực tiếp file vào RAM (Slide 153 - 157) 
+            giúp đọc/ghi file siêu tốc mà không cần qua cache buffer của OS.
+2// Khóa file tránh xung đột (File Locking):
+        Dùng fcntl() với cấu trúc struct flock để đặt khóa chia sẻ (Shared Read Lock F_RDLCK) 
+            và khóa độc quyền (Exclusive Write Lock F_WRLCK).
+------------------------------------------------------------------------------------------------------------------
+                3 NGUYÊN TẮC "BẤT DI BẤT DỊCH" ĐỂ KHÔNG BỊ TRỪ ĐIỂM Ở TRƯỜNG PHÁP:
+
+1// Kiểm tra lỗi hệ thống 100% (Test systématique des retours): Slide 74 và 75 nhấn mạnh: 
+    Mọi hàm system call (open, read, fork, execve) bắt buộc phải kiểm tra lỗi -1 và dùng perror() hoặc strerror(errno)!
+
+int fd = open("file.txt", O_RDONLY);
+if (fd == -1) {
+    perror("Erreur open");
+    exit(EXIT_FAILURE);
+}
+
+2// Không làm rò rỉ tài nguyên: Mở file descriptor (open) là phải đóng (close). 
+    Mở tiến trình con (fork) là cha phải wait() để dọn xác, tuyệt đối không để sót tiến trình Zombie.
+3// Phân biệt rõ ràng: Khi nào dùng hàm của Thư viện C chuẩn (Section 3: man 3 malloc, fopen), 
+    khi nào dùng System Call của Kernel (Section 2: man 2 sbrk, open).

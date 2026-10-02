@@ -1,0 +1,22 @@
+SYSTEM CALL
+Thư mục này để code bài tập TD Prog Sys, chủ yếu học về System call.
+    Đọc/Ghi file trên ổ cứng → Phải gọi System Call: open(), read(), write().
+    Tạo một tiến trình mới → Phải gọi System Call: fork().
+    Gửi dữ liệu qua mạng → Phải gọi System Call: send(), socket().
+
+Bài 1 : Dùng systemcall write() in ra chữ "hello".
+    Hàm write(Nơi muốn đẩy data ra, Dữ liệu muốn ghi, Độ dài số byte cần ghi).
+    Write(int, const void *, size_t)
+        void * là con trỏ vạn năng, muốn trỏ char * hay int * cũng đều dc
+        size_t là unsigned int
+Bài 2 : Làm cho hệ thống bị lỗi có chủ đích.
+    các System Call (open, read, write) rất hay bị lỗi (do ổ cứng đầy, mất mạng, file bị khóa, người dùng gõ sai). 
+    Để viết được code bắt lỗi giỏi, trước hết bạn phải biết cách cố tình chọc cho nó bị lỗi để kiểm tra 
+    phản ứng của hệ điều hành!
+Bài 3 : In lỗi ra bằng hàm perror.
+    Khi bạn gọi hàm này, nó làm 3 việc tự động:
+        1/ In ra chữ "Tiêu_đề_của_bạn" mà bạn truyền vào.
+        2/ Tự động thêm một dấu hai chấm và dấu cách: ": ".
+        3/ Tự động tra cứu mã lỗi hiện tại trong hệ thống và in ra nguyên nhân cụ thể bằng tiếng Anh (và tự xuống dòng \n).
+        Toàn bộ thông điệp này được bắn thẳng ra Kênh 2 (stderr)!
+

@@ -1,0 +1,2 @@
+ÁP DỤNG KIẾN THỨC 
+Thư mục này để lưu các bài code C thực hành trên lớp.
