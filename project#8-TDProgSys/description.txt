@@ -13,10 +13,22 @@ Bài 2 : Làm cho hệ thống bị lỗi có chủ đích.
     các System Call (open, read, write) rất hay bị lỗi (do ổ cứng đầy, mất mạng, file bị khóa, người dùng gõ sai). 
     Để viết được code bắt lỗi giỏi, trước hết bạn phải biết cách cố tình chọc cho nó bị lỗi để kiểm tra 
     phản ứng của hệ điều hành!
+    In ra để báo lỗi bằng write.
 Bài 3 : In lỗi ra bằng hàm perror.
     Khi bạn gọi hàm này, nó làm 3 việc tự động:
         1/ In ra chữ "Tiêu_đề_của_bạn" mà bạn truyền vào.
         2/ Tự động thêm một dấu hai chấm và dấu cách: ": ".
         3/ Tự động tra cứu mã lỗi hiện tại trong hệ thống và in ra nguyên nhân cụ thể bằng tiếng Anh (và tự xuống dòng \n).
         Toàn bộ thông điệp này được bắn thẳng ra Kênh 2 (stderr)!
-
+Bài 4 : Tự code hàm perror.
+    Tạo ra lỗi tương tự bài 2 và bài 3.
+    Tuy nhiên, thay vì in lỗi bằng perror, ta dùng errno và strerror, sau đó, kết hợp với write để in lỗi ra.
+Bài 6 : Code lệnh "env" trong linux bằng C.
+    Trong linux, lệnh env là để xem danh sách các biến môi trường, ta code lệnh này bằng C để hiểu bản chất.
+    Ta tạo file bai6.c để đọc từ RAM và sau đó in ra các biến môi trường, 
+        khi người ta gõ ./bai6.c, terminal sẽ in ra các biến môi trường.
+Bài 7 : Code ctrinh dòng lệnh, gõ Key thì in ra Value của biến môi trường đó.
+Bài 8 : Dùng hàm pathconf
+    Nhập đường dẫn file hoặc thư mục, sau đó gõ thông số muốn đo giới hạn (tên file, đường dẫn, ống pipe), rồi gõ thông điệp hiển thị.
+    Kết quả sẽ trả về giới hạn hệ thống cho khía cạnh mà ta muốn đo.
+Bài 9 : Thử các loại giới hạn, dung hàm main, test xem có in ra như mong muốn k.
