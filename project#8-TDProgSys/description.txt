@@ -32,3 +32,6 @@ Bài 8 : Dùng hàm pathconf
     Nhập đường dẫn file hoặc thư mục, sau đó gõ thông số muốn đo giới hạn (tên file, đường dẫn, ống pipe), rồi gõ thông điệp hiển thị.
     Kết quả sẽ trả về giới hạn hệ thống cho khía cạnh mà ta muốn đo.
 Bài 9 : Thử các loại giới hạn, dung hàm main, test xem có in ra như mong muốn k.
+Bài 10 : Dùng hàm getpwnam để hiển thị danh sách hồ sơ của ng dùng.
+Bài 11 : Vấn đề đặt ra : liệu ctrinh bai10 có chạy đúng với mọi tài khoản không. (mấy tài khoản thiếu thông số.)
+    Viết chương trình để test, k thể ngồi gõ tay dc.
