@@ -1,0 +1,16 @@
+I-NODE VÀ CẤU TRÚC STRUCT STAT
+Học cách nhìn thấu vào thông tin ngầm của bất kì file nào trong Linux.  
+
+Viết chương trình my_stat.c nhận tên một file hoặc thư mục từ dòng lệnh (argv[1]). 
+Chương trình sẽ thò tay vào Nhân Linux, kéo bảng I-node của file đó lên và in ra toàn bộ thông tin bảo mật của file đó!
+
+Ví dụ khi gõ : ./my_stat my_cat.c
+Màn hình sẽ hiển thị : 
+=== THONG TIN I-NODE CUA FILE: my_cat.c ===
+- So hieu I-node (inode number): 26553484
+- Loai file (Type): File thuong (Regular file) ///???
+- Quyen han (Permissions): -rwxr-xr-x ///???
+- So luong lien ket cung (Links): 1 
+- Dung luong (Size): 1024 bytes
+- Chu so huu (Owner): khanh (UID: 1000) /// Getpwuid để lấy trỏ, trỏ lại pw_name
+- Nhom so huu (Group): khanh (GID: 1000) /// Getgrgid lấy trỏ struct group, trỏ lại gr_name
